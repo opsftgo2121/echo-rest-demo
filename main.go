@@ -3,6 +3,7 @@ package main
 import (
 	"example/config"
 	"example/controller"
+	"fmt"
 	"os"
 
 	_ "github.com/joho/godotenv/autoload"
@@ -22,5 +23,5 @@ func main() {
 	bookRoute.GET("/:id", bookController.Detail)
 	bookRoute.DELETE("/:id", bookController.Delete)
 
-	e.Logger.Fatal(e.Start(":8000"))
+	e.Logger.Fatal(e.Start(fmt.Sprintf(":%s", os.Getenv("PORT"))))
 }
